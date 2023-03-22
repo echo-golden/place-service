@@ -18,6 +18,8 @@ public class KeywordInquiryServiceImpl implements InquiryService {
     @Override
     public KeywordInquiryResponse keywords() {
         List<Place> placeList = placeRepository.findTop10ByOrderByCountDesc();
+
+        //TODO builder 로 변경
         KeywordInquiryResponse keywordInquiryResponse = new KeywordInquiryResponse();
         keywordInquiryResponse.setCode(ResponseCode.SUCCESS.getCode());
         keywordInquiryResponse.setMessage(ResponseCode.SUCCESS.getMessage());

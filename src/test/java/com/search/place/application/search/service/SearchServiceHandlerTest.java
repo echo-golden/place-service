@@ -7,11 +7,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -30,7 +29,7 @@ public class SearchServiceHandlerTest {
         assertEquals(10, resp.getCount());
     }
 
-    @org.junit.Test
+    @Test
     public void 키워드_목록_조회() {
         KeywordInquiryResponse resp =  keywordInquiryService.keywords();
 

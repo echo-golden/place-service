@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <withJansi>true</withJansi>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %highlight(%-5level) [%thread]%cyan(%X{uid} %logger{10}) - %msg%n</Pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${APP_LOG}/place-search.log</file>
+        <encoder>
+            <Pattern>%date{yyyy-MM-dd HH:mm:ss.SSS} %-5level [%thread] %mdc{uid} %logger{10} - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${APP_LOG}/place-search.%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <includeCallerData>true</includeCallerData>
+        <discardingThreshold>0</discardingThreshold>
+        <appender-ref ref="FILE"/>
+    </appender>
+
+    <springProfile name="default, local">
+        <root level="INFO">
+            <appender-ref ref="STDOUT"/>
+        </root>
+
+        <logger name="org.springframework" level="INFO"/>
+    </springProfile>
+</configuration>

@@ -1,0 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:h2:tcp://localhost/~/jpashop
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    show-sql: true
+
+place:
+  api:
+    kakao:
+      url: https://dapi.kakao.com/v2/local/search/keyword.json
+      rest_api_key: 06ef4fb932f677f5bf2bd296a3fa12ec
+      display_count: 5
+
+    naver:
+      url: https://openapi.naver.com/v1/search/local.json
+      client_id: Ep9m_ZyxCZFJR1bQSQbm
+      client_secret: I7tIXNoI1m
+      display_count: 5
